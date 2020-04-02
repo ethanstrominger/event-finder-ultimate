@@ -43,10 +43,10 @@ const EventSearch = props => {
       <p>End Date: {eventSearch.end_date}</p>
       <p>End Time: {eventSearch.end_time}</p>
       <button onClick={destroy}>Delete</button>
-      <Link to={`/eventsearches/${props.match.params.id}/edit`}>
+      <Link to={`/event_searches/${props.match.params.id}/edit`}>
         <button>Edit</button>
       </Link>
-      <Link to="/eventsearches">Back to all eventSearch</Link>
+      <Link to="/event_searches">Back to all eventSearch</Link>
     </MainLayout>
   )
 }

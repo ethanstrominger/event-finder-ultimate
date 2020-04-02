@@ -129,16 +129,16 @@ class App extends Component {
           <AuthenticatedRoute exact user={user} path='/movies/:id/edit' render={({ match }) => (
             <MovieEdit match={match} msgAlert={this.msgAlert} user={user} />
           )} />
-          <AuthenticatedRoute exact user={user} path='/eventsearches' render={() => (
+          <AuthenticatedRoute exact user={user} path='/event_searches' render={() => (
             <EventSearches msgAlert={this.msgAlert} user={user} />
           )} />
-          <AuthenticatedRoute exact user={user} path='/eventsearches/:id' render={({ match }) => (
+          <AuthenticatedRoute exact user={user} path='/event_searches/:id' render={({ match }) => (
             <EventSearch match={match} msgAlert={this.msgAlert} user={user} />
           )} />
           <AuthenticatedRoute exact user={user} path='/eventsearch-create' render={() => (
             <EventSearchCreate msgAlert={this.msgAlert} user={user} />
           )} />
-          <AuthenticatedRoute exact user={user} path='/eventsearches/:id/edit' render={({ match }) => (
+          <AuthenticatedRoute exact user={user} path='/event_searches/:id/edit' render={({ match }) => (
             <EventSearchEdit match={match} msgAlert={this.msgAlert} user={user} />
           )} />
         </main>

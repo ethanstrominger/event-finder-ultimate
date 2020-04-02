@@ -24,7 +24,7 @@ const EventSearches = props => {
   const eventSearchesLinks = eventSearches.filter(eventSearches =>
     getId(eventSearches) !== undefined).map(eventSearches => (
     <li key={`eventSearches${getId(eventSearches)}`}>
-      <Link to={`/eventsearches/${getId(eventSearches)}`}>{getId(eventSearches)}</Link>
+      <Link to={`/event_searches/${getId(eventSearches)}`}>{getId(eventSearches)}</Link>
       {`${eventSearches.source} ${eventSearches.keyword} ${eventSearches.start_date}
         ${eventSearches.start_time} ${eventSearches.end_date}
         ${eventSearches.end_time}`}

@@ -35,7 +35,7 @@ const EventSearchEdit = props => {
       .catch(console.error)
   }
   if (isEventSearchUpdated) {
-    return <Redirect to={`/eventsearches/${props.match.params.id}`} />
+    return <Redirect to={`/event_searches/${props.match.params.id}`} />
   }
   return (
     <MainLayout>
@@ -43,7 +43,7 @@ const EventSearchEdit = props => {
         eventSearch={eventSearch}
         handleChange={handleChange}
         handleSubmit={handleSubmit}
-        cancelPath={`/eventsearches/${props.match.params.id}`}
+        cancelPath={`/event_searches/${props.match.params.id}`}
       />
     </MainLayout>
   )
