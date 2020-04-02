@@ -15,15 +15,19 @@ const EventSearches = props => {
   useEffect(() => {
     getEventSearches(props) // returns promise to get eventSearches
       .then(res => {
-        setEventSearches(res.data.eventSearches.filter(eventSearches => getId(eventSearches) !== undefined))
+        setEventSearches(res.data.event_searches.filter(eventSearches => getId(eventSearches) !== undefined))
       })
       .catch(console.error)
   }, [])
 
   // === set eventSearchesLinks to html bulleted list of eventSearches ussing eventSearches variable
-  const eventSearchesLinks = eventSearches.filter(eventSearches => getId(eventSearches) !== undefined).map(eventSearches => (
+  const eventSearchesLinks = eventSearches.filter(eventSearches =>
+    getId(eventSearches) !== undefined).map(eventSearches => (
     <li key={`eventSearches${getId(eventSearches)}`}>
-      <Link to={`/eventSearches/${getId(eventSearches)}`}>{eventSearches.title}</Link>
+      <Link to={`/eventsearches/${getId(eventSearches)}`}>{getId(eventSearches)}</Link>
+      {`${eventSearches.source} ${eventSearches.keyword} ${eventSearches.start_date}
+        ${eventSearches.start_time} ${eventSearches.end_date}
+        ${eventSearches.end_time}`}
     </li>
   ))
 

@@ -14,10 +14,11 @@ const EventSearchEdit = props => {
     end_time: ''
   })
   const [isEventSearchUpdated, setIsEventSearchUpdated] = useState(false)
-
   useEffect(() => {
     getEventSearch(props)
-      .then(res => setEventSearch(res.data.eventSearch))
+      .then(res => {
+        setEventSearch(res.data.event_search)
+      })
       .catch(console.error)
   }, [])
   const handleChange = event => {
@@ -34,7 +35,7 @@ const EventSearchEdit = props => {
       .catch(console.error)
   }
   if (isEventSearchUpdated) {
-    return <Redirect to={`/eventSearch/${props.match.params.id}`} />
+    return <Redirect to={`/eventsearches/${props.match.params.id}`} />
   }
   return (
     <MainLayout>
@@ -42,7 +43,7 @@ const EventSearchEdit = props => {
         eventSearch={eventSearch}
         handleChange={handleChange}
         handleSubmit={handleSubmit}
-        cancelPath={`/eventSearch/${props.match.params.id}`}
+        cancelPath={`/eventsearches/${props.match.params.id}`}
       />
     </MainLayout>
   )

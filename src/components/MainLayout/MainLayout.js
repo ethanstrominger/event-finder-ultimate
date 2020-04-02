@@ -5,7 +5,7 @@ import Footer from '../Footer/Footer'
 // The components are called by app.js
 const MainLayout = props => (
   <div>
-    <h1>Interwebs Moving Picture Database</h1>
+    <h1>Event Finder and Collator</h1>
 
     {props.children}
 

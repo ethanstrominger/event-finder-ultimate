@@ -2,7 +2,7 @@ import React from 'react'
 
 const EventSearchForm = ({ eventSearch, handleSubmit, handleChange }) => (
   <form onSubmit={handleSubmit}>
-    <label>Title</label>
+    <label>Source</label>
     <input
       placeholder="Enter source (meetup)"
       name="source"
@@ -19,38 +19,35 @@ const EventSearchForm = ({ eventSearch, handleSubmit, handleChange }) => (
     />
     <label>Start Date</label>
     <input
-      placeholder="YYYY-MM-DD"
-      name="Start Date"
-      value={eventSearch.start_date || ''}
+      placeholder="mm-dd-yyyy"
+      name="start_date"
       type="date"
+      value={eventSearch.start_date || ''}
+      onChange={handleChange}
+    />
+    <label>End Date</label>
+    <input
+      placeholder="mm-dd-yyyy"
+      name="end_date"
+      type="date"
+      value={eventSearch.end_date || ''}
       onChange={handleChange}
     />
     <label>Start Time</label>
     <input
-      placeholder="18:00"
-      name="Start Time"
-      value={eventSearch.start_date || ''}
+      placeholder="hh:mm:ss AM/PM"
+      name="start_time"
       type="time"
+      value={eventSearch.start_time || ''}
       onChange={handleChange}
-      required
-    />
-    <label>End Date</label>
-    <input
-      placeholder="YYYY-MM-DD"
-      name="End Date"
-      value={eventSearch.end_date || ''}
-      type="date"
-      onChange={handleChange}
-      required
     />
     <label>End Time</label>
     <input
-      placeholder="20:00"
-      name="End Time"
-      value={eventSearch.end_time || ''}
+      placeholder="hh:mm:ss AM/PM"
+      name="end_time"
       type="time"
+      value={eventSearch.end_time || ''}
       onChange={handleChange}
-      required
     />
 
     <button type="submit">Submit</button>

@@ -4,16 +4,17 @@ import MainLayout from '../../MainLayout/MainLayout'
 import { getEventSearch, destroyEventSearch } from '../../../api/eventSearchApis'
 
 const EventSearch = props => {
-  const [eventSearch, setEventSearch] = useState(null)
+  const [eventSearch, setEventSearch] = useState({})
   const [deleted, setDeleted] = useState(false)
-
   // Call this callback once after the first render, this only occurs once
   // because our dependency array is empty, so our dependencies never change
   // similar to componentDidMount
   useEffect(() => {
     getEventSearch(props)
       // Make sure to update this.setState to our hooks setEventSearch function
-      .then(res => setEventSearch(res.data.eventSearch))
+      .then(res => {
+        setEventSearch(res.data.event_search)
+      })
       .catch(console.error)
   }, [])
 
@@ -42,10 +43,10 @@ const EventSearch = props => {
       <p>End Date: {eventSearch.end_date}</p>
       <p>End Time: {eventSearch.end_time}</p>
       <button onClick={destroy}>Delete</button>
-      <Link to={`/eventSearch/${props.match.params.id}/edit`}>
+      <Link to={`/eventsearches/${props.match.params.id}/edit`}>
         <button>Edit</button>
       </Link>
-      <Link to="/eventSearch">Back to all eventSearch</Link>
+      <Link to="/eventsearches">Back to all eventSearch</Link>
     </MainLayout>
   )
 }

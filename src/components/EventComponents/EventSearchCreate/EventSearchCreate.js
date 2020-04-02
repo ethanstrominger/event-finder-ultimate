@@ -7,8 +7,14 @@ import MainLayout from '../../MainLayout/MainLayout'
 import { getId } from '../../../utils'
 
 const EventSearchCreate = props => {
-  const [eventSearch, setEventSearch] = useState({ title: '', director: '', year: '' })
-  const [createdEventSearchId, setCreatedEventSearchId] = useState(null)
+  const [eventSearch, setEventSearch] = useState({
+    source: '',
+    start_date: '',
+    start_time: '',
+    end_date: '',
+    end_time: ''
+  })
+  const [createdEventId, setCreatedEventId] = useState(null)
 
   const handleChange = event => {
     const updatedField = { [event.target.name]: event.target.value }
@@ -20,12 +26,17 @@ const EventSearchCreate = props => {
     event.preventDefault()
 
     createEventSearch(props, eventSearch)
-      .then(res => setCreatedEventSearchId(getId(res.data.event_search)))
+      .then(res => {
+        const id = getId(res.data.event_search)
+        // console.log('id', id)
+        setCreatedEventId(id)
+        // console.log('Right here', createdEventId)
+      })
       .catch(console.error)
   }
 
-  if (createdEventSearchId) {
-    return <Redirect to={`/event_searches/${createdEventSearchId}`} />
+  if (createdEventId) {
+    return <Redirect to={`/event_searches/${createdEventId}`} />
   }
 
   return (
