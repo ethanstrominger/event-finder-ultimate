@@ -71,4 +71,6 @@ See [user stories](docs/stories.md)
 ![Create](docs/mockups/create-just-in-mind.png?raw=true)
 ![Update](docs/mockups/update-just-in-mind.png?raw=true)
 ![List](docs/mockups/query-list-just-in-mind.png?raw=true)
-![]
+
+### Installation and Deployment Instructions
+See [setup docs](docs/setup.md) for set up instructions.
