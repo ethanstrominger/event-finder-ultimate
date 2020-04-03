@@ -1,7 +1,12 @@
 import React from 'react'
 
 const Footer = () => (
-  <p>Created by WDI 029.</p>
+  <p>
+    copyright (2020)
+    <a href="https://linkedin.com/in/ethan-strominger">
+      Ethan Strominger
+    </a>
+  </p>
 )
 
 export default Footer
