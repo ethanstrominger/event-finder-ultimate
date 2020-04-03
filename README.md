@@ -62,10 +62,10 @@ console.log, developer tool, and google were my friends.  I either traced from t
 See [user stories](docs/stories.md)
 
 ### Wireframes
-![Home Page](docs/mockupa/home-page-just-in-mind.png?raw=true)
-![Sign Up](docs/mockups/sign-up-just-in-mind.png?raw=true)
-![Sign In](docs/mockups/sign-in-just-in-mind.png?raw=true)
+![Home Page](docs/mockups/home-page-just-in-mind.png?raw=true)
+![Sign Up](docs/mockups/sign-up.png?raw=true)
+![Sign In](docs/mockups/sign-in.png?raw=true)
 ![Create](docs/mockups/create-just-in-mind.png?raw=true)
 ![Update](docs/mockups/update-just-in-mind.png?raw=true)
-![List](docs/mockups/query-list-in-mind.png?raw=true)
+![List](docs/mockups/query-list-just-in-mind.png?raw=true)
 ![]
