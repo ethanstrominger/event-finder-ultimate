@@ -33,7 +33,7 @@ Both front-end and back-end repos should include README's with:
 1.  [X] Document your planning, process and problem-solving strategy
 
 Your front-end repo's README should also have:
-1.  [ ] Link to wireframes and user stories
+1.  [X] Link to wireframes and user stories
 1.  [ ] An embedded screenshot of the app
 1.  [ ] Set up and installation instructions for front end application
 

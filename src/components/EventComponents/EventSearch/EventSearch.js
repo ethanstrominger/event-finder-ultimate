@@ -60,7 +60,7 @@ const EventSearch = props => {
       <Link to={`/event_searches/${props.match.params.id}/edit`}>
         <button>Edit</button>
       </Link>
-      <Link to="/event_searches">Back to all eventSearch</Link>
+      <Link to="/event_searches"><button>Back</button></Link>
     </MainLayout>
   )
 }

@@ -23,6 +23,9 @@ const EventSearches = props => {
       })
   }, [])
 
+  const timep = (time) => {
+    return time
+  }
   // === set eventSearchesLinks to html bulleted list of eventSearches ussing eventSearches variable
   const eventSearchesWithNoBlanks = eventSearches.filter(eventSearches => getId(eventSearches))
   let eventSearchLinks
@@ -32,12 +35,7 @@ const EventSearches = props => {
     eventSearchLinks = eventSearchesWithNoBlanks.map(eventSearches => (
       <li key={`eventSearches${getId(eventSearches)}`}>
         <Link to={`/event_searches/${getId(eventSearches)}`}>{getId(eventSearches)}</Link>
-        {`${eventSearches.source}
-          ${eventSearches.keyword}
-          ${eventSearches.start_date}
-          ${eventSearches.start_time}
-          ${eventSearches.end_date}
-          ${eventSearches.end_time}`}
+        {` Source: ${eventSearches.source} * Keyword: ${eventSearches.keyword} * Start/End Dates: ${eventSearches.start_date} to ${eventSearches.end_date} * Start/End Times: ${timep(eventSearches.start_time)} to ${timep(eventSearches.end_time)}`}
       </li>
     ))
   }
@@ -45,7 +43,7 @@ const EventSearches = props => {
   // === return fragment with a h4 and the list of eventSearches.
   return (
     <MainLayout>
-      <h4>EventSearches!</h4>
+      <h4>Event Searches</h4>
       <ul>
         {eventSearchLinks}
       </ul>

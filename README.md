@@ -61,6 +61,9 @@ console.log, developer tool, and google were my friends.  I either traced from t
 ### User Stories
 See [user stories](docs/stories.md)
 
+### Screen Shot
+![Screen Shot](docs/screenshot.png?raw=true)
+
 ### Wireframes
 ![Home Page](docs/mockups/home-page-just-in-mind.png?raw=true)
 ![Sign Up](docs/mockups/sign-up.png?raw=true)
