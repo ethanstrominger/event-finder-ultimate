@@ -24,22 +24,30 @@ const EventSearches = props => {
   }, [])
 
   // === set eventSearchesLinks to html bulleted list of eventSearches ussing eventSearches variable
-  const eventSearchesLinks = eventSearches.filter(eventSearches =>
-    getId(eventSearches) !== undefined).map(eventSearches => (
-    <li key={`eventSearches${getId(eventSearches)}`}>
-      <Link to={`/event_searches/${getId(eventSearches)}`}>{getId(eventSearches)}</Link>
-      {`${eventSearches.source} ${eventSearches.keyword} ${eventSearches.start_date}
-        ${eventSearches.start_time} ${eventSearches.end_date}
-        ${eventSearches.end_time}`}
-    </li>
-  ))
+  const eventSearchesWithNoBlanks = eventSearches.filter(eventSearches => getId(eventSearches))
+  let eventSearchLinks
+  if (eventSearchesWithNoBlanks.length === 0) {
+    eventSearchLinks = <p>No event searches.  Click on create to add a new one.</p>
+  } else {
+    eventSearchLinks = eventSearchesWithNoBlanks.map(eventSearches => (
+      <li key={`eventSearches${getId(eventSearches)}`}>
+        <Link to={`/event_searches/${getId(eventSearches)}`}>{getId(eventSearches)}</Link>
+        {`${eventSearches.source}
+          ${eventSearches.keyword}
+          ${eventSearches.start_date}
+          ${eventSearches.start_time}
+          ${eventSearches.end_date}
+          ${eventSearches.end_time}`}
+      </li>
+    ))
+  }
 
   // === return fragment with a h4 and the list of eventSearches.
   return (
     <MainLayout>
       <h4>EventSearches!</h4>
       <ul>
-        {eventSearchesLinks}
+        {eventSearchLinks}
       </ul>
     </MainLayout>
   )

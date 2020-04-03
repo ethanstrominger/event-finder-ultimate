@@ -3,6 +3,7 @@ import { Link, Redirect } from 'react-router-dom'
 import MainLayout from '../../MainLayout/MainLayout'
 import { getEventSearch, destroyEventSearch } from '../../../api/eventSearchApis'
 import { displayUnexpectedFailure } from '../../../utils'
+import messages from '../../AutoDismissAlert/messages'
 
 const EventSearch = props => {
   const { msgAlert } = props
@@ -24,7 +25,14 @@ const EventSearch = props => {
 
   const destroy = () => {
     destroyEventSearch(props)
-      .then(() => setDeleted(true))
+      .then(() => {
+        setDeleted(true)
+        msgAlert({
+          heading: 'Delete Completed',
+          message: messages.deleteSuccess,
+          variant: 'success'
+        })
+      })
       .catch(error => {
         displayUnexpectedFailure(msgAlert, error, 'deleting')
       })
