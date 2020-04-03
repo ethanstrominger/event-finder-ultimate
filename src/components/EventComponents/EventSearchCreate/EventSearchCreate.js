@@ -4,9 +4,10 @@ import { Redirect } from 'react-router-dom'
 import { createEventSearch } from '../../../api/eventSearchApis'
 import EventSearchForm from '../EventSearchForm/EventSearchForm'
 import MainLayout from '../../MainLayout/MainLayout'
-import { getId } from '../../../utils'
+import { displayUnexpectedFailure, getId } from '../../../utils'
 
 const EventSearchCreate = props => {
+  const { msgAlert } = props
   const [eventSearch, setEventSearch] = useState({
     source: '',
     start_date: '',
@@ -28,11 +29,11 @@ const EventSearchCreate = props => {
     createEventSearch(props, eventSearch)
       .then(res => {
         const id = getId(res.data.event_search)
-        // console.log('id', id)
         setCreatedEventId(id)
-        // console.log('Right here', createdEventId)
       })
-      .catch(console.error)
+      .catch(error => {
+        displayUnexpectedFailure(msgAlert, error, 'saving')
+      })
   }
 
   if (createdEventId) {

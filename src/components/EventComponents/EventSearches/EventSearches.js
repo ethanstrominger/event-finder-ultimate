@@ -2,11 +2,12 @@ import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import MainLayout from '../../MainLayout/MainLayout'
 import { getEventSearches } from '../../../api/eventSearchApis'
-import { getId } from '../../../utils'
+import { displayUnexpectedFailure, getId } from '../../../utils'
 
 const EventSearches = props => {
   // NOTE on React Hook: useState is used by React Hooks to create state variables and
   // setter function for component
+  const { msgAlert } = props
   const [eventSearches, setEventSearches] = useState([])
 
   // ==== Fetch eventSearches into eventSearches variable ===
@@ -17,7 +18,9 @@ const EventSearches = props => {
       .then(res => {
         setEventSearches(res.data.event_searches.filter(eventSearches => getId(eventSearches) !== undefined))
       })
-      .catch(console.error)
+      .catch(error => {
+        displayUnexpectedFailure(msgAlert, error, 'fetching')
+      })
   }, [])
 
   // === set eventSearchesLinks to html bulleted list of eventSearches ussing eventSearches variable

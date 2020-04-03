@@ -3,8 +3,10 @@ import { Redirect } from 'react-router-dom'
 import EventSearchForm from '../EventSearchForm/EventSearchForm'
 import MainLayout from '../../MainLayout/MainLayout'
 import { saveUpdatedEventSearch, getEventSearch } from '../../../api/eventSearchApis.js'
+import { displayUnexpectedFailure } from '../../../utils'
 
 const EventSearchEdit = props => {
+  const { msgAlert } = props
   const [eventSearch, setEventSearch] = useState({
     source: '',
     keyword: '',
@@ -19,7 +21,9 @@ const EventSearchEdit = props => {
       .then(res => {
         setEventSearch(res.data.event_search)
       })
-      .catch(console.error)
+      .catch(error => {
+        displayUnexpectedFailure(msgAlert, error, 'fetching')
+      })
   }, [])
   const handleChange = event => {
     const updatedField = { [event.target.name]: event.target.value }
@@ -32,7 +36,9 @@ const EventSearchEdit = props => {
     event.preventDefault()
     saveUpdatedEventSearch(props, eventSearch)
       .then(() => setIsEventSearchUpdated(true))
-      .catch(console.error)
+      .catch(error => {
+        displayUnexpectedFailure(msgAlert, error, 'saving')
+      })
   }
   if (isEventSearchUpdated) {
     return <Redirect to={`/event_searches/${props.match.params.id}`} />

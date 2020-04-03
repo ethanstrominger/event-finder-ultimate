@@ -2,8 +2,10 @@ import React, { useEffect, useState } from 'react'
 import { Link, Redirect } from 'react-router-dom'
 import MainLayout from '../../MainLayout/MainLayout'
 import { getEventSearch, destroyEventSearch } from '../../../api/eventSearchApis'
+import { displayUnexpectedFailure } from '../../../utils'
 
 const EventSearch = props => {
+  const { msgAlert } = props
   const [eventSearch, setEventSearch] = useState({})
   const [deleted, setDeleted] = useState(false)
   // Call this callback once after the first render, this only occurs once
@@ -15,13 +17,17 @@ const EventSearch = props => {
       .then(res => {
         setEventSearch(res.data.event_search)
       })
-      .catch(console.error)
+      .catch(error => {
+        displayUnexpectedFailure(msgAlert, error, 'fetching')
+      })
   }, [])
 
   const destroy = () => {
     destroyEventSearch(props)
       .then(() => setDeleted(true))
-      .catch(console.error)
+      .catch(error => {
+        displayUnexpectedFailure(msgAlert, error, 'deleting')
+      })
   }
 
   if (!eventSearch) {
